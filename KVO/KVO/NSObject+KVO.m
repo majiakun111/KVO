@@ -15,7 +15,6 @@ static NSString *kKVOAssociatedObservationInfos = nil;
 
 @interface ObservationInfo : NSObject
 
-@property (nonatomic, weak) id observer;
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) ObserverBlock block;
 
@@ -23,11 +22,10 @@ static NSString *kKVOAssociatedObservationInfos = nil;
 
 @implementation ObservationInfo
 
-- (instancetype)initWithObserver:(id)observer key:(NSString *)key block:(ObserverBlock)block
+- (instancetype)initWithKey:(NSString *)key block:(ObserverBlock)block
 {
     self = [super init];
     if (self) {
-        _observer = observer;
         _key = key;
         _block = block;
     }
@@ -50,8 +48,12 @@ static NSString *kKVOAssociatedObservationInfos = nil;
  *  @param block    block
  */
 
-- (void)addObserver:(NSObject *)observer forKey:(NSString *)key block:(ObserverBlock)block
+- (void)addObserveForKey:(NSString *)key block:(ObserverBlock)block
 {
+    if (!key || ![key isKindOfClass:[NSString class]]) {
+        return;
+    }
+    
     //1.
     NSString *setterName = setterForGetter(key);
     SEL setterSelector = NSSelectorFromString(setterName);
@@ -75,7 +77,7 @@ static NSString *kKVOAssociatedObservationInfos = nil;
     }
     
     //5
-    ObservationInfo *observationInfo = [[ObservationInfo alloc] initWithObserver:observer key:key block:block];
+    ObservationInfo *observationInfo = [[ObservationInfo alloc] initWithKey:key block:block];
     NSMutableArray *observerInfos = objc_getAssociatedObject(self, &kKVOAssociatedObservationInfos);
     if (!observerInfos) {
         observerInfos = [NSMutableArray array];
@@ -84,19 +86,19 @@ static NSString *kKVOAssociatedObservationInfos = nil;
     [observerInfos addObject:observationInfo];
 }
 
-- (void)removeObserver:(NSObject *)observer forKey:(NSString *)key
+- (void)removeObserverForKey:(NSString *)key
 {
-    NSMutableArray* observers = objc_getAssociatedObject(self, &kKVOAssociatedObservationInfos);
+    NSMutableArray* observationInfos = objc_getAssociatedObject(self, &kKVOAssociatedObservationInfos);
     
     ObservationInfo *observationInfo;
-    for (ObservationInfo* info in observers) {
-        if (info.observer == observer && [info.key isEqual:key]) {
+    for (ObservationInfo* info in observationInfos) {
+        if ([info.key isEqual:key]) {
             observationInfo = info;
             break;
         }
     }
     
-    [observers removeObject:observationInfo];
+    [observationInfos removeObject:observationInfo];
 }
 
 #pragma mark - Create Class
@@ -138,15 +140,16 @@ static void kvo_setter(id self, SEL _cmd, id newValue)
     };
     
     void (*objc_msgSendSuperCasted)(void *, SEL, id) = (void *)objc_msgSendSuper;
-    
     objc_msgSendSuperCasted(&superclazz, _cmd, newValue);
     
-    NSMutableArray *observers = objc_getAssociatedObject(self, &kKVOAssociatedObservationInfos);
-    for (ObservationInfo *each in observers) {
-        if ([each.key isEqualToString:getterName]) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                each.block(self, getterName, oldValue, newValue);
-            });
+    NSMutableArray *observerInfos = objc_getAssociatedObject(self, &kKVOAssociatedObservationInfos);
+    for (ObservationInfo *observerInfo in observerInfos) {
+        if (![observerInfo.key isEqualToString:getterName]) {
+            continue;
+        }
+        
+        if (observerInfo.block) {
+            observerInfo.block(self, getterName, oldValue, newValue);
         }
     }
 }

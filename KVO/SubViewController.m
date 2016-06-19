@@ -15,7 +15,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self.person addObserver:self forKey:@"name" block:^(id observer, NSString *key, id oldValue, id newValue) {
+    [self.person addObserveForKey:@"name" block:^(id observer, NSString *key, id oldValue, id newValue) {
         
     }];
 }

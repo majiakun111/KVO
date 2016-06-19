@@ -13,8 +13,8 @@ typedef void(^ObserverBlock)(id object, NSString *key, id oldValue, id newValue)
 @interface NSObject (KVO)
 
 ////TODO: 暂不支持  a.b.c
-- (void)addObserver:(NSObject *)observer forKey:(NSString *)key block:(ObserverBlock)block;
+- (void)addObserveForKey:(NSString *)key block:(ObserverBlock)block;
 
-- (void)removeObserver:(NSObject *)observer forKey:(NSString *)key;
+- (void)removeObserverForKey:(NSString *)key;
 
 @end
