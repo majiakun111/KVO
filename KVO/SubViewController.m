@@ -1,34 +1,28 @@
 //
-//  ViewController.m
+//  SubViewController.m
 //  KVO
 //
-//  Created by Ansel on 16/6/17.
+//  Created by Ansel on 16/6/19.
 //  Copyright © 2016年 Ansel. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SubViewController.h"
 #import "NSObject+KVO.h"
 
-@interface ViewController ()
-
-@end
-
-@implementation ViewController
+@implementation SubViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    _person = [[Person alloc] init];
     
     [self.person addObserver:self forKey:@"name" block:^(id observer, NSString *key, id oldValue, id newValue) {
         
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    self.person.name = @"Ansel";
 }
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) Person *person;
 
 @end
 

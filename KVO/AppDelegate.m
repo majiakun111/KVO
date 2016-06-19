@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SubViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    SubViewController *subViewController = [[SubViewController alloc] init];
+    self.window.rootViewController = subViewController;
+    
+    [self.window makeKeyAndVisible];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
     return YES;
 }
 

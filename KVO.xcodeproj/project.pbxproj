@@ -10,9 +10,11 @@
 		5BE8A2741D1446EA00E05154 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8A2731D1446EA00E05154 /* main.m */; };
 		5BE8A2771D1446EA00E05154 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8A2761D1446EA00E05154 /* AppDelegate.m */; };
 		5BE8A27A1D1446EA00E05154 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8A2791D1446EA00E05154 /* ViewController.m */; };
-		5BE8A27D1D1446EA00E05154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE8A27B1D1446EA00E05154 /* Main.storyboard */; };
 		5BE8A27F1D1446EA00E05154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BE8A27E1D1446EA00E05154 /* Assets.xcassets */; };
 		5BE8A2821D1446EA00E05154 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE8A2801D1446EA00E05154 /* LaunchScreen.storyboard */; };
+		5BE8A28C1D14F66100E05154 /* NSObject+KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8A28B1D14F66100E05154 /* NSObject+KVO.m */; };
+		5BE8A28F1D162F3500E05154 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8A28E1D162F3500E05154 /* Person.m */; };
+		5BE8A2951D16310A00E05154 /* SubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8A2941D16310A00E05154 /* SubViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +24,15 @@
 		5BE8A2761D1446EA00E05154 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5BE8A2781D1446EA00E05154 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5BE8A2791D1446EA00E05154 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5BE8A27C1D1446EA00E05154 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BE8A27E1D1446EA00E05154 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BE8A2811D1446EA00E05154 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BE8A2831D1446EA00E05154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BE8A28A1D14F66100E05154 /* NSObject+KVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVO.h"; sourceTree = "<group>"; };
+		5BE8A28B1D14F66100E05154 /* NSObject+KVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVO.m"; sourceTree = "<group>"; };
+		5BE8A28D1D162F3500E05154 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		5BE8A28E1D162F3500E05154 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		5BE8A2931D16310A00E05154 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
+		5BE8A2941D16310A00E05154 /* SubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +65,15 @@
 		5BE8A2711D1446EA00E05154 /* KVO */ = {
 			isa = PBXGroup;
 			children = (
+				5BE8A2891D14F5FE00E05154 /* KVO */,
 				5BE8A2751D1446EA00E05154 /* AppDelegate.h */,
 				5BE8A2761D1446EA00E05154 /* AppDelegate.m */,
 				5BE8A2781D1446EA00E05154 /* ViewController.h */,
 				5BE8A2791D1446EA00E05154 /* ViewController.m */,
-				5BE8A27B1D1446EA00E05154 /* Main.storyboard */,
+				5BE8A2931D16310A00E05154 /* SubViewController.h */,
+				5BE8A2941D16310A00E05154 /* SubViewController.m */,
+				5BE8A28D1D162F3500E05154 /* Person.h */,
+				5BE8A28E1D162F3500E05154 /* Person.m */,
 				5BE8A27E1D1446EA00E05154 /* Assets.xcassets */,
 				5BE8A2801D1446EA00E05154 /* LaunchScreen.storyboard */,
 				5BE8A2831D1446EA00E05154 /* Info.plist */,
@@ -77,6 +88,15 @@
 				5BE8A2731D1446EA00E05154 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5BE8A2891D14F5FE00E05154 /* KVO */ = {
+			isa = PBXGroup;
+			children = (
+				5BE8A28A1D14F66100E05154 /* NSObject+KVO.h */,
+				5BE8A28B1D14F66100E05154 /* NSObject+KVO.m */,
+			);
+			path = KVO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +158,6 @@
 			files = (
 				5BE8A2821D1446EA00E05154 /* LaunchScreen.storyboard in Resources */,
 				5BE8A27F1D1446EA00E05154 /* Assets.xcassets in Resources */,
-				5BE8A27D1D1446EA00E05154 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE8A28C1D14F66100E05154 /* NSObject+KVO.m in Sources */,
 				5BE8A27A1D1446EA00E05154 /* ViewController.m in Sources */,
+				5BE8A28F1D162F3500E05154 /* Person.m in Sources */,
+				5BE8A2951D16310A00E05154 /* SubViewController.m in Sources */,
 				5BE8A2771D1446EA00E05154 /* AppDelegate.m in Sources */,
 				5BE8A2741D1446EA00E05154 /* main.m in Sources */,
 			);
@@ -158,14 +180,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5BE8A27B1D1446EA00E05154 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BE8A27C1D1446EA00E05154 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5BE8A2801D1446EA00E05154 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -302,6 +316,7 @@
 				5BE8A2881D1446EA00E05154 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
