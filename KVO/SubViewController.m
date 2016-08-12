@@ -18,11 +18,16 @@
     [self.person addObserveForKey:@"name" block:^(id observer, NSString *key, id oldValue, id newValue) {
         
     }];
+    
+    [self.person addObserveForKey:@"address" block:^(id object, NSString *key, id oldValue, id newValue) {
+        
+    }];
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     self.person.name = @"Ansel";
+    self.person.address = @"SZ";
 }
 
 @end

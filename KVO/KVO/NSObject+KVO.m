@@ -69,12 +69,13 @@ static NSString *kKVOAssociatedObservationInfos = nil;
     if (![clazzName hasPrefix:kKVOClassPrefix]) {
         clazz = [self makeKVOClassWithClassName:clazzName];
         
-        const char *types = method_getTypeEncoding(setterMethod);
-        class_addMethod(clazz, setterSelector, (IMP)kvo_setter, types);
-        
         //4.
         object_setClass(self, clazz);
     }
+    
+    //5.
+    const char *types = method_getTypeEncoding(setterMethod);
+    class_addMethod(clazz, setterSelector, (IMP)kvo_setter, types);
     
     //5
     ObservationInfo *observationInfo = [[ObservationInfo alloc] initWithKey:key block:block];
